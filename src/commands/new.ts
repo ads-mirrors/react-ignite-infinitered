@@ -793,7 +793,7 @@ module.exports = {
 
       // #region Configure app.json
       // Enable New Architecture if requested (must happen before prebuild)
-      startSpinner("Configuring app.json")
+      startSpinner(" Configuring app.json")
       try {
         const appJsonRaw = read("app.json")
         const appJson = JSON.parse(appJsonRaw)
@@ -815,7 +815,7 @@ module.exports = {
         log(e)
         p(yellow("Unable to configure app.json."))
       }
-      stopSpinner("Configuring app.json", "⚙️")
+      stopSpinner(" Configuring app.json", "⚙️")
       // #endregion
 
       // #region Run Prebuild
@@ -823,7 +823,7 @@ module.exports = {
       if (installDeps === true) {
         // Check if we need to run prebuild to generate native dirs based on workflow
         // Prebuild also handles the packager install
-        const prebuildMessage = `Generating native template via Expo Prebuild`
+        const prebuildMessage = ` Generating native template via Expo Prebuild`
         startSpinner(prebuildMessage)
         await packager.run("prebuild:clean", { ...packagerOptions, onProgress: log })
         stopSpinner(prebuildMessage, "🛠️")
@@ -832,7 +832,7 @@ module.exports = {
 
       // #region Remove Demo code
       const removeDemoPart = removeDemo === true ? "code" : "markup"
-      startSpinner(`Removing fancy demo ${removeDemoPart}`)
+      startSpinner(` Removing fancy demo ${removeDemoPart}`)
       try {
         const IGNITE = "node " + filesystem.path(__dirname, "..", "..", "bin", "ignite")
         const CMD = removeDemo === true ? "remove-demo" : "remove-demo-markup"
@@ -843,7 +843,7 @@ module.exports = {
         log(e)
         p(yellow(`Unable to remove demo ${removeDemoPart}.`))
       }
-      stopSpinner(`Removing fancy demo ${removeDemoPart}`, "🛠️")
+      stopSpinner(` Removing fancy demo ${removeDemoPart}`, "🛠️")
       // #endregion
 
       // #region Expo Router edits
